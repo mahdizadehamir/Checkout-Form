@@ -1,12 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '/src/components/Home.vue'
-
+import Basket from '/src/components/Basket.vue'
 const routes = [
     {
         path: '/',
         name: 'Home',
         component: Home,
     },
+    {
+        path:'/basket',
+        name:'Basket',
+        component:Basket
+    }
 ]
 
 const router = createRouter({
