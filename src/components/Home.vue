@@ -1,4 +1,4 @@
-<template>
+n<template>
     <div class="flex justify-center items-center flex-wrap h-screen">
         <div
             class="w-full md:w-1/4 p-2 m-auto"
@@ -10,7 +10,7 @@
                 :productDes="product.detail"
                 :productPrice="product.price"
                 :productPic="product.picture"
-                :addToBasket="addToCounter(product)"
+                @addingToBasket="addToCounter(product) "
             />
         </div>
         <router-link class="p-2 rounded bg-gray-600 text-white" to="/basket"
@@ -30,7 +30,7 @@ export default {
     computed: {
         ...mapState('products', ['products']),
         ...mapState('basket', ['selectedItems']),
-        ...mapGetters('basket', ['addToBasketItem']),
+        ...mapGetters('basket', ['findDuplicateItems']),
     },
      methods: {
         ...mapMutations('basket', ['addToCounter']),

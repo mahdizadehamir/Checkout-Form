@@ -42,7 +42,7 @@
         <div class="flex justify-center items-center px-2 pb-2">
             <div class="p-2">
                 <button
-                @click="addToBasket"
+                v-on:click="$emit('addingToBasket')"
                     class="
                         block
                         w-full
@@ -71,8 +71,13 @@ export default {
         ...mapState('products', ['products']),
         ...mapState('basket', ['selectedItems']),
     },
-    props: ['productTitle', 'productDes', 'productPrice', 'productPic','addToBasket'],
-    
+    props: ['productTitle', 'productDes', 'productPrice', 'productPic',],
+    // methods:{
+    //     addToBasket(){
+    //         this.$emit("addingToBasket")
+    //     }
+    // },
+    emits:['addingToBasket']
 }
 </script>
 
