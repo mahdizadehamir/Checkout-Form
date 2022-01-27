@@ -8,7 +8,7 @@ n<template>
             <ProductCard
                 :productTitle="product.title"
                 :productDes="product.detail"
-                :productPrice="product.price"
+                :productPrice="(toFarsiNumber(product.price))"
                 :productPic="product.picture"
                 @addingToBasket="addToCounter(product) "
             />
@@ -30,10 +30,19 @@ export default {
     computed: {
         ...mapState('products', ['products']),
         ...mapState('basket', ['selectedItems']),
-        ...mapGetters('basket', ['findDuplicateItems']),
+        
     },
      methods: {
         ...mapMutations('basket', ['addToCounter']),
-    },
+         toFarsiNumber(n) {
+    const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+
+    return n
+      .toString()
+      .split('')
+      .map(x => farsiDigits[x])
+      .join('');
+  }
+    }
 }
 </script>

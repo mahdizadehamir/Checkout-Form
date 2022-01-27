@@ -5,6 +5,7 @@ const store = createStore({
     modules: {
         products,basket
     },
+    
 })
 
 export default store

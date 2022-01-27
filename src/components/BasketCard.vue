@@ -1,18 +1,27 @@
 <template>
-    <div class="flex flex-row items-center">
+    <div
+        class="
+            flex
+            lg:flex-row
+            justify-between
+            items-center
+            rounded-lg
+            shoadow-md
+            bg-white
+            mt-3
+            p-2
+            lg:w-1/2
+            md:w-full
+        "
+    >
         <a
             href="#"
             class="
                 flex flex-col
                 items-center
-                bg-white
-                rounded-lg
-                shoadow-md
-                md:flex-row md:max-w-xl
+                md:flex-row md:w-xl
                 hover:bg-gray-100
                 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700
-                mt-3
-                p-2
             "
             alt=""
         >
@@ -20,9 +29,9 @@
                 class="
                     object-cover
                     w-full
-                    h-96
+                    h-52
                     rounded-t-lg
-                    md:h-auto md:w-48 md:rounded-none md:rounded-l-lg
+                    md:h-52 md:w-52 md:rounded-md md:rounded-l-lg
                 "
                 :src="productPicture"
                 alt=""
@@ -43,19 +52,39 @@
                     {{ productDetail }}
                 </p>
             </div>
-            <div>
-                <p class="font-bold m-2 ">{{ productPrice }}</p>
-                <label for="">:تعداد</label>
-                <input class="w-10 m-2 border-2" type="number" :value="count">
-                <p>جمع مبلغ : {{totalPrice}}</p>
-            </div>
         </a>
+        <div class="flex flex-col justify-between items-center p-4">
+            <p class="font-bold">{{ productPrice }}</p>
+            <div class="flex flex-row justify-between">
+                <input
+                    class="w-10 mr-4 border-2"
+                    type="number"
+                    :value="count"
+                    name="count"
+                />
+                <label for="count">:تعداد</label>
+            </div>
+
+            <p class="mt-3">جمع مبلغ : {{ totalPrice }}</p>
+        </div>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['productPicture', 'productTitle', 'productDetail', 'productPrice','totalPrice','count'],
+    props: [
+        'productPicture',
+        'productTitle',
+        'productDetail',
+        'productPrice',
+        'totalPrice',
+        'count',
+        'input',
+        'value',
+    ],
+    emits: ['updateCount'],
+    methods: {},
+    computed: {},
 }
 </script>
 

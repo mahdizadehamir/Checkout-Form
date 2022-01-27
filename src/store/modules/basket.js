@@ -3,11 +3,13 @@ export default {
     state: () => ({
         selectedItems: [],
         basketItems: [],
+        inputValue:{}
     }),
 
     getters: {
         //Change the Value of States
-        priceCalculator: (state) => {},
+      
+        
     },
 
     mutations: {
@@ -34,6 +36,12 @@ export default {
             state.basketItems = state.basketItems.slice().reverse().filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)
             console.log(state.basketItems)
         },
+        updateCount(state,payload){
+            // const findItems = state.basketItems.findIndex(x => (x.id === payload.id))
+            // state.basketItems[findItems].qun = payload.qun
+            console.log(payload)
+
+        }
     },
 
     actions: {
