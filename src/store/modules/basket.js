@@ -3,11 +3,14 @@ export default {
     state: () => ({
         selectedItems: [],
         basketItems: [],
-        inputValue:{}
+        counter:{}
     }),
 
     getters: {
-        //Change the Value of States
+       
+       deleteItem:(state) => (payload) => {
+           state.basketItems =  state.basketItems.filter(((v,i,a) => { return v.id != payload.id}))
+       }
       
         
     },
@@ -33,14 +36,14 @@ export default {
                 // state.basketItems.shift()}
 
             }
-            state.basketItems = state.basketItems.slice().reverse().filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)
+            state.basketItems = state.basketItems.slice().reverse().filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i).reverse()
             console.log(state.basketItems)
         },
-        updateCount(state,payload){
+        updateCounter(state,payload){
             // const findItems = state.basketItems.findIndex(x => (x.id === payload.id))
             // state.basketItems[findItems].qun = payload.qun
-            console.log(payload)
-
+            state.counter = payload
+            console.log(state.payload)
         }
     },
 

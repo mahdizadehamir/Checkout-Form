@@ -59,14 +59,18 @@
                 <input
                     class="w-10 mr-4 border-2"
                     type="number"
-                    :value="count"
                     name="count"
+                    :value="count"
+                    v-on:change="$emit('updateCount',$event)"
                 />
                 <label for="count">:تعداد</label>
             </div>
 
             <p class="mt-3">جمع مبلغ : {{ totalPrice }}</p>
+           
         </div>
+        <a href="#" @click="$emit('trashButton')"><fa icon="trash" /></a>
+         
     </div>
 </template>
 
@@ -81,10 +85,22 @@ export default {
         'count',
         'input',
         'value',
+        'updateCount'
     ],
-    emits: ['updateCount'],
-    methods: {},
-    computed: {},
+    emits:['updateCount','trashButton'],
+  
+    methods: {
+       
+    },
+    computed: {
+        // counter:{
+        // get(){
+        //     return this.$store.state.basket.obj.counter
+        // },
+        // set(value){
+        //     this.$store.dispatch('basket/updateCounter',value)
+        // }}
+    },
 }
 </script>
 

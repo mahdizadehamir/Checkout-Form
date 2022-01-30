@@ -8,7 +8,8 @@
                 :productPrice="toFarsiNumber(products[item.id].price)"
                 :count="item.qun"
                 :totalPrice="toFarsiNumber(item.qun * products[item.id].price)"
-                @updateCount="message"
+                @updateCount="item.qun = $event.target.value "
+                @trashButton="deleteItem(item)"
             />
         </div>
     </div>
@@ -20,10 +21,15 @@ import { mapGetters, mapState } from 'vuex'
 
 export default {
     components: { BasketCard },
+    data(){
+        return{
+        counter: {}
+        }
+    },
     computed: {
         ...mapState('products', ['products']),
         ...mapState('basket', ['basketItems']),
-        ...mapGetters('basket',['priceCalculator']),
+        ...mapGetters('basket',['deleteItem']),
        
     },
     methods:{
@@ -35,9 +41,7 @@ export default {
       .map(x => farsiDigits[x])
       .join('');
   },
-  message(event) {
-            this.$store.commit('basket/updateCount', event.target.value )
-        },
+  
   
     }
 }
