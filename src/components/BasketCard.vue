@@ -10,8 +10,7 @@
             bg-white
             mt-3
             p-2
-            lg:w-1/2
-            md:w-full
+            w-full
         "
     >
         <a

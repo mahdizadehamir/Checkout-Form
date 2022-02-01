@@ -5,16 +5,9 @@ export default {
         basketItems: [],
         counter: {},
     }),
-    // getters is change the value of States
+    // getters is change the value of States but its Temporary
     getters: {
-        deleteItem: (state) => (payload) => {
-            // first find my elemet Id and Then delete it from Basket Items
-            const findElementId = (element) => {
-                return element.id === payload.id
-            }
-            const elementId = state.basketItems.findIndex(findElementId)
-            state.basketItems.splice(elementId, 1)
-        },
+       
     },
 
     mutations: {
@@ -37,8 +30,6 @@ export default {
                     id: parseInt(product),
                     qun: counts[product],
                 })
-                // if(state.basketItems.length > 4){
-                // state.basketItems.shift()}
             }
             state.basketItems = state.basketItems
                 .slice()
@@ -47,12 +38,15 @@ export default {
                 .reverse()
             console.log(state.basketItems)
         },
-        updateCounter(state, payload) {
-            // const findItems = state.basketItems.findIndex(x => (x.id === payload.id))
-            // state.basketItems[findItems].qun = payload.qun
-            state.counter = payload
-            console.log(state.payload)
-        },
+        deleteItem(state,payload){
+            const findElementId = (element) => {
+                return element.id === payload.id
+            }
+            
+            const elementId = state.basketItems.findIndex(findElementId)
+            state.basketItems.splice(elementId, 1)
+            state.selectedItems.splice(0,state.selectedItems.length)
+        }
     },
 
     actions: {
