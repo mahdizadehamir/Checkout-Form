@@ -4,10 +4,23 @@ export default {
         selectedItems: [],
         basketItems: [],
         counter: {},
+        allPrice:{}
     }),
     // getters is change the value of States but its Temporary
     getters: {
-       
+       calculateAllPrice:(state)=> {
+           let allAllPrice = 0;
+        for(let j=0; j<state.selectedItems.length ; j++){
+            for (let i=0 ; i<state.basketItems.length ; i++){
+          if(state.selectedItems[j].id === state.basketItems[i].id ){
+              allAllPrice += state.basketItems[i].qun * state.selectedItems[j].price
+              console.log(allAllPrice)
+          }              
+
+           }
+       }
+       return allAllPrice
+    }
     },
 
     mutations: {

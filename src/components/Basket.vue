@@ -12,14 +12,15 @@
                         toFarsiNumber(item.qun * products[item.id].price)
                     "
                     @updateCount="item.qun = $event.target.value"
-                    @trashButton="deleteItem(item)"
+                    @trashButton="deleteItem(item);calculateAllPrice(state)"
                     
-                />
+                >
+                </BasketCard>
             </div>
         </div>
         <div dir="rtl" class="flex flex-col justify-start  md:mt-3 sm:mt-2 rounded-lg shadow-md bg-white  max-h-72 p-2 md:w-1/3 sm:w-full w-full " :class="[basketItems.length === 0 ? 'hidden' : 'display']">
             
-                <p class="mb-1"> جمع سبد خرید  {{}}</p>
+                <p class="mb-1"> جمع سبد خرید  </p><p>{{calculateAllPrice}}</p>
                 <p class="">هزینه‌ی ارسال در ادامه بر اساس آدرس، زمان و نحوه‌ی ارسال انتخابی شما‌ محاسبه و به این مبلغ اضافه خواهد شد</p>
                 <router-link to="/Checkout" class="rounded-lg bg-red-500 mt-4 p-4 text-white text-center md:w-4/5 sm:w-3/5 sm:self-center  " >ادامه فرایند خرید </router-link>
             
@@ -42,7 +43,7 @@ export default {
         //importing stateItems From Store
         ...mapState('products', ['products']),
         ...mapState('basket', ['basketItems',]),
-        ...mapGetters('basket',['allPrice'])
+        ...mapGetters('basket',['calculateAllPrice'])
     },
     methods: {
         //converting Eng Numbers To Persian
