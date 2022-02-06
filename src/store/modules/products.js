@@ -3,28 +3,28 @@ export default {
     state: () => ({
         products: [
             {
-                id: 0,
+                id:0,
                 title: 'لاستیک خودرو بارز ',
                 detail: 'گارانتی ۵۰ ماهه',
                 price: '5000000',
                 picture: 'https://arnestire.com/wp-content/uploads/2019/07/185-65-14-p640.jpg',
             },
             {
-                id: 1,
+                id:1,
                 title: 'A52 گوشی موبایل ',
                 detail: 'گارانتی 12 ماهه',
                 price: '6800000',
                 picture: 'https://m-cdn.phonearena.com/images/articles/369868-940/Samsung-Galaxy-A52-in-blue-and-black.webp',
             },
             {
-                id: 2,
+                id:2,
                 title: 'Oral B دهانشویه مارک ',
                 detail: 'پاک کننده جرم های دندان',
                 price: '200000',
                 picture: 'https://dkstatics-public.digikala.com/digikala-products/4383652.jpg?x-oss-process=image/resize,m_lfit,h_600,w_600/quality,q_80',
             },
             {
-                id: 3,
+                id:3,
                 title: 'هندزفری اپل',
                 detail: 'گارانتی ۲۴ ماهه',
                 price: '4800000',

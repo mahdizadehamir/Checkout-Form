@@ -4,23 +4,24 @@ export default {
         selectedItems: [],
         basketItems: [],
         counter: {},
-        allPrice:{}
+        allPric: [0,0,0,0],
     }),
     // getters is change the value of States but its Temporary
     getters: {
-       calculateAllPrice:(state)=> {
-           let allAllPrice = 0;
-        for(let j=0; j<state.selectedItems.length ; j++){
-            for (let i=0 ; i<state.basketItems.length ; i++){
-          if(state.selectedItems[j].id === state.basketItems[i].id ){
-              allAllPrice += state.basketItems[i].qun * state.selectedItems[j].price
-              console.log(allAllPrice)
-          }              
-
-           }
-       }
-       return allAllPrice
-    }
+        calculateAllPrice: (state) => {
+            let allAllPrice = 0
+            for (let j = 0; j < state.selectedItems.length; j++) {
+                for (let i = 0; i < state.basketItems.length; i++) {
+                    if (state.selectedItems[j].id === state.basketItems[i].id) {
+                        allAllPrice +=
+                            state.basketItems[i].qun *
+                            state.selectedItems[j].price
+                        console.log(allAllPrice)
+                    }
+                }
+            }
+            return allAllPrice
+        },
     },
 
     mutations: {
@@ -51,15 +52,19 @@ export default {
                 .reverse()
             console.log(state.basketItems)
         },
-        deleteItem(state,payload){
+        deleteItem(state, payload) {
             const findElementId = (element) => {
                 return element.id === payload.id
             }
-            
+
             const elementId = state.basketItems.findIndex(findElementId)
             state.basketItems.splice(elementId, 1)
-            state.selectedItems.splice(0,state.selectedItems.length)
-        }
+            state.selectedItems.splice(0, state.selectedItems.length)
+        },
+        changeCount(state, payload) {
+            state.basketItems[payload[0]].qun = payload[1]
+        },
+
     },
 
     actions: {
