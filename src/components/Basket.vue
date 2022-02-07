@@ -116,7 +116,16 @@ export default {
         },
         //importing Mutation Methods
         ...mapMutations('basket', ['deleteItem', 'changeCount']),
+        myBackButtonFunction(){
+            this.$router.go(-1)
+        },
     },
+    mounted(){
+            document.addEventListener("backbutton",this.myBackButtonFunction,false)
+    },
+    beforeUnmount(){
+        document.removeEventListener("backbutton",this.myBackButtonFunction)
+    }
 }
 </script>
 
