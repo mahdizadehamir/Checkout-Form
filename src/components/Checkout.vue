@@ -70,15 +70,23 @@
                     placeholder="ادامه آدرس"
                 />
                 <label class="block mt-2" for="state">استان :</label>
-                <select v-model="myProvince" class="mt-1" name="state" >
-                    <option  v-for="province in provinces" :key="province" :value="province.id">
-                        {{province.name}}
+                <select v-model="myProvince" class="mt-1" name="state">
+                    <option
+                        v-for="province in provinces"
+                        :key="province"
+                        :value="province.id"
+                    >
+                        {{ province.name }}
                     </option>
                 </select>
-                <label class="block mt-2 " for="city">شهر :</label>
-                <select  class="mt-1" name="city " >
-                    <option >
-                        {{findOb(myProvince)}}
+                <label class="block mt-2" for="city">شهر :</label>
+                <select name="city">
+                    <option
+                        v-for="city in provinceCities"
+                        :key="city"
+                        :value="city"
+                    >
+                        {{ city }}
                     </option>
                 </select>
             </form>
@@ -89,17 +97,34 @@
 <script>
 import { mapGetters, mapState } from 'vuex'
 export default {
-    data(){
-        return{
-        myProvince:null}
+    data() {
+        return {
+            myProvince: null,
+        }
     },
-    computed:{
-        ...mapState('provinces',['provinces'])
+    computed: {
+        ...mapState('provinces', ['provinces']),
+        provinceCities: function () {
+            const thisStor = Object.entries(
+                this.$store.state.provinces.provinces
+            )
+            let myCity = null
+             for (let i = 0; i < thisStor.length; i++) {
+                if (thisStor[i][1].id === this.myProvince) {
+                    
+                   return myCity = thisStor[i][1].cities
+                   
+                   
+                }else{
+                    continue
+                }
+            }
+            return (myCity)
+        },
     },
-    methods:{
-        ...mapGetters('provinces',['findOb'])
-    }
-    
+    methods: {
+        ...mapGetters('provinces', ['findOb']),
+    },
 }
 </script>
 
