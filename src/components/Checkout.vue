@@ -70,7 +70,7 @@
                     placeholder="ادامه آدرس"
                 />
                 <label class="block mt-2" for="state">استان :</label>
-                <select v-model="myProvince" class="mt-1" name="state">
+                <select @input="updateSelect" class="mt-1" name="state" >
                     <option
                         v-for="province in provinces"
                         :key="province"
@@ -82,7 +82,7 @@
                 <label class="block mt-2" for="city">شهر :</label>
                 <select name="city">
                     <option
-                        v-for="city in provinceCities"
+                        v-for="city in showProvinceCity"
                         :key="city"
                         :value="city"
                     >
@@ -104,26 +104,13 @@ export default {
     },
     computed: {
         ...mapState('provinces', ['provinces']),
-        provinceCities: function () {
-            const thisStor = Object.entries(
-                this.$store.state.provinces.provinces
-            )
-            let myCity = null
-             for (let i = 0; i < thisStor.length; i++) {
-                if (thisStor[i][1].id === this.myProvince) {
-                    
-                   return myCity = thisStor[i][1].cities
-                   
-                   
-                }else{
-                    continue
-                }
-            }
-            return (myCity)
-        },
+        ...mapState({provinciData:(state) => state.provinces.provinceSelect}),
+        ...mapGetters('provinces',['showProvinceCity'])
     },
     methods: {
-        ...mapGetters('provinces', ['findOb']),
+        updateSelect(e){
+            this.$store.commit('provinces/updateSelect',e.target.value)
+        }
     },
 }
 </script>
