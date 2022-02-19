@@ -8,6 +8,7 @@
             rounded-lg
             shoadow-md
             bg-white
+            dark:bg-blue-900
             mt-3
             p-2
             w-full
@@ -60,16 +61,14 @@
                     type="number"
                     name="count"
                     :value="count"
-                    v-on:change="$emit('updateCount',$event)"
+                    v-on:change="$emit('updateCount', $event)"
                 />
                 <label for="count">:تعداد</label>
             </div>
 
             <p class="mt-3">جمع مبلغ : {{ totalPrice }}</p>
-           
         </div>
         <a href="#" @click="$emit('trashButton')"><fa icon="trash" /></a>
-         
     </div>
 </template>
 
@@ -84,13 +83,11 @@ export default {
         'count',
         'input',
         'value',
-        'updateCount'
+        'updateCount',
     ],
-    emits:['updateCount','trashButton'],
-  
-    methods: {
-       
-    },
+    emits: ['updateCount', 'trashButton'],
+
+    methods: {},
     computed: {
         // counter:{
         // get(){

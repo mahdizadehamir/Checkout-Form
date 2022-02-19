@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white shadow-lg hover:shadow-xl rounded-lg">
+    <div class="bg-white dark:bg-blue-900  shadow-lg hover:shadow-xl rounded-lg">
         <div
             class="
                 bg-gray-400
@@ -26,14 +26,14 @@
         </div>
         <div class="flex justify-between items-start px-2 pt-2">
             <div class="p-2 flex-grow">
-                <h1 class="font-medium text-xl font-poppins">
+                <h1 class="font-medium text-xl font-poppins dark:text-white">
                     {{ productTitle }}
                 </h1>
-                <p class="text-gray-500 font-nunito">
+                <p class="text-gray-500 font-nunito dark:text-white">
                     {{ productDes }}
                 </p>
             </div>
-            <div class="p-2 text-right">
+            <div class="p-2 text-right dark:text-white">
                 <div class="text-teal-500 font-semibold text-lg font-poppins">
                     <span dir="rtl">{{ productPrice }} تومان</span>
                 </div>
@@ -46,8 +46,11 @@
                     class="
                         block
                         w-full
+                        dark:bg-gray-600
+                        dark:text-white
                         bg-green-400
                         hover:bg-gray-100
+                        dark:hover:bg-yellow-700
                         text-teal-500
                         border-2 border-teal-500
                         px-3

@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto">
+    <div class="lg:p-2 md:container md:mx-auto">
         <router-view :key="$route.path" />
     </div>
 </template>
