@@ -4,9 +4,18 @@ module.exports = {
     darkMode: "class", // or 'media' or 'class'
     theme: {
         extend: {},
+        fontFamily:{
+            'titr':['Lalezar','Noto Naskh Arabic UI'],
+            'body':['Noto Naskh Arabic UI','Lalezar']
+        }
     },
     variants: {
         extend: {},
     },
-    plugins: [],
+    plugins: [
+        require('flowbite/plugin')
+    ],
+    content:[
+        "./node_modules/flowbite/**/*.js"
+    ]
 }

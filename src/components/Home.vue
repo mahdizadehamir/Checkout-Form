@@ -17,11 +17,6 @@
                 "
             />
         </div>
-        <router-link
-            class="p-2 rounded bg-gray-600 text-white"
-            :to="{ name: 'Basket' }"
-            >سبد خرید</router-link
-        >
         <notifications
             :width="250"
             position="bottom right"
@@ -72,10 +67,10 @@ export default {
             })
         },
     },
-    mounted() {
+    beforeCreate() {
         if (
-            localStorage.theme === 'dark' ||
-            (!('theme' in localStorage) &&
+            localStorage.getItem('color-theme') === 'dark' ||
+            (!('color-theme' in localStorage) &&
                 window.matchMedia('(prefers-color-scheme: dark)').matches)
         ) {
             document.documentElement.classList.add('dark')
