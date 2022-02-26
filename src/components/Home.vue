@@ -1,6 +1,34 @@
 <template>
     <NavigationBar />
-    <div class="flex justify-center items-center flex-wrap h-screen">
+
+    <vueper-slides
+        class="no-shadow max-w-4xl mx-auto p-4"
+        :touchable="true"
+        fixed-height="450px"
+        :visible-slides="3"
+        slide-multiple
+        :gap="3"
+        :slide-ratio="1 / 4"
+        :dragging-distance="200"
+        :breakpoints="{ 800: { visibleSlides: 1, slideMultiple: 2 } }"
+    >
+        <vueper-slide v-for="product in products" :key="product.id">
+            <template #content>
+                <ProductCard
+                    :productTitle="product.title"
+                    :productDes="product.detail"
+                    :productPrice="toFarsiNumber(product.price)"
+                    :productPic="product.picture"
+                    @addingToBasket="
+                        addToCounter(product);
+                        notify()
+                    "
+                />
+            </template>
+        </vueper-slide>
+    </vueper-slides>
+
+    <!-- <div class="flex justify-center items-center flex-wrap h-screen">
         <div
             class="w-full md:w-1/4 p-2 m-auto"
             v-for="product in products"
@@ -17,15 +45,15 @@
                 "
             />
         </div>
-        <notifications
-            :width="250"
-            position="bottom right"
-            class="text-center"
-        />
-    </div>
+        
+    </div> -->
+
+    <notifications :width="250" position="bottom right" class="text-center" />
 </template>
 
 <script>
+import { VueperSlides, VueperSlide } from 'vueperslides'
+import 'vueperslides/dist/vueperslides.css'
 import ProductCard from './ProductCard.vue'
 import { mapGetters, mapMutations, mapState } from 'vuex'
 import NavigationBar from './NavigationBar.vue'
@@ -33,6 +61,8 @@ export default {
     components: {
         ProductCard,
         NavigationBar,
+        VueperSlides,
+        VueperSlide,
     },
     computed: {
         ...mapState('products', ['products']),
@@ -80,3 +110,20 @@ export default {
     },
 }
 </script>
+
+<style>
+/* :root.dark{
+    background-color: white;
+} */
+
+.dark .vueperslides__arrow {
+    color: white;}
+@media screen  and (max-width:800px){
+    .dark .vueperslides__arrow{
+        color: black !important;
+    }
+    .vueperslides__arrow{
+        color:black !important;
+    }
+}
+</style>

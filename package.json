@@ -16,6 +16,7 @@
     "flowbite": "^1.3.4",
     "vue": "^3.2.19",
     "vue-router": "^4.0.11",
+    "vueperslides": "^3.3.2",
     "vuex": "^4.0.2",
     "vuex-persistedstate": "^4.1.0"
   },
