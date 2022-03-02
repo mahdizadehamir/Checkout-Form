@@ -6,7 +6,8 @@ module.exports = {
         extend: {},
         fontFamily:{
             'titr':['Lalezar','Noto Naskh Arabic UI'],
-            'body':['Noto Naskh Arabic UI','Lalezar']
+            'body':['Noto Naskh Arabic UI','Lalezar'],
+            'product':['B Yekan','Noto Naskh Arabic UI','Open Sans'],
         }
     },
     variants: {

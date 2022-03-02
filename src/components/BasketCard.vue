@@ -8,10 +8,11 @@
             rounded-lg
             shoadow-md
             bg-white
-            dark:bg-blue-900
+            dark:bg-gray-900
             mt-3
             p-2
             w-full
+            shadow-lg
         "
     >
         <a
@@ -21,7 +22,7 @@
                 items-center
                 md:flex-row md:w-xl
                 hover:bg-gray-100
-                dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700
+                dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-700
             "
             alt=""
         >
@@ -40,7 +41,9 @@
                 <h5
                     class="
                         mb-2
+                        font-product
                         font-extrabold
+                        text-lg
                         tracking-tight
                         text-gray-900
                         dark:text-white
@@ -48,16 +51,16 @@
                 >
                     {{ productTitle }}
                 </h5>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <p class="mb-3 font-product font-normal text-gray-700 dark:text-gray-400">
                     {{ productDetail }}
                 </p>
             </div>
         </a>
-        <div class="flex flex-col justify-between items-center p-4">
-            <p class="font-bold">{{ productPrice }}</p>
+        <div class="flex flex-col dark:text-white justify-between items-center p-4">
+            <p class="font-product">{{ productPrice }}  :قیمت واحد </p>
             <div class="flex flex-row justify-between">
                 <input
-                    class="w-10 mr-4 border-2"
+                    class="w-16 mr-4 border-2 font-product dark:text-black text-center"
                     type="number"
                     name="count"
                     :value="count"
@@ -66,9 +69,9 @@
                 <label for="count">:تعداد</label>
             </div>
 
-            <p class="mt-3">جمع مبلغ : {{ totalPrice }}</p>
+            <p class="font-product mt-3">جمع مبلغ : {{ totalPrice }}</p>
         </div>
-        <a href="#" @click="$emit('trashButton')"><fa icon="trash" /></a>
+        <a href="#" @click="$emit('trashButton')"><fa class="dark:text-white" icon="trash" /></a>
     </div>
 </template>
 

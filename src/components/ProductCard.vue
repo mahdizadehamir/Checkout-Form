@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white dark:bg-blue-900  shadow-lg hover:shadow-xl rounded-lg">
+    <div class="bg-white dark:bg-blue-900 shadow-lg hover:shadow-xl rounded-lg">
         <div
             class="
                 bg-gray-400
@@ -24,30 +24,48 @@
                 </button>
             </div>
         </div>
-        <div class="flex justify-between items-start px-2 pt-2">
-            <div class="p-2 flex-grow">
-                <h1 class="font-medium text-xl font-poppins dark:text-white">
+        <div class="flex flex-col justify-center items-start px-2 pt-2">
+            <div class="p-2 flex-grow items-center">
+                <h1 class="text-lg font-product dark:text-white">
                     {{ productTitle }}
                 </h1>
-                <p class="text-gray-500 font-nunito dark:text-white">
+                <p
+                    class="
+                        text-gray-500
+                        font-product
+                        text-xs
+                        dark:text-white
+                        mt-3
+                    "
+                >
                     {{ productDes }}
                 </p>
             </div>
-            <div class="p-2 text-right dark:text-white">
-                <div class="text-teal-500 font-semibold text-lg font-poppins">
-                    <span dir="rtl">{{ productPrice }} تومان</span>
+            <div class="self-end p-2 text-right dark:text-white">
+                <div
+                    class="
+                        font-bold
+                        text-black
+                        dark:text-white
+                        text-lg
+                        font-product
+                    "
+                >
+                    <span dir="rtl"
+                        >{{ productPrice }} <span class="text-sm">تومان</span>
+                    </span>
                 </div>
             </div>
         </div>
         <div class="flex justify-center items-center px-2 pb-2">
             <div class="p-2">
                 <button
-                v-on:click="$emit('addingToBasket')"
+                    v-on:click="$emit('addingToBasket')"
                     class="
+                        font-product
                         block
                         w-full
-                        dark:bg-gray-600
-                        dark:text-white
+                        dark:bg-gray-600 dark:text-white
                         bg-green-400
                         hover:bg-gray-100
                         dark:hover:bg-yellow-700
@@ -67,20 +85,22 @@
 </template>
 
 <script>
-import { mapState,mapMutations } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
     computed: {
         ...mapState('products', ['products']),
         ...mapState('basket', ['selectedItems']),
     },
-    props: ['productTitle', 'productDes', 'productPrice', 'productPic',],
+    props: ['productTitle', 'productDes', 'productPrice', 'productPic'],
     // methods:{
     //     addToBasket(){
     //         this.$emit("addingToBasket")
     //     }
     // },
-    emits:['addingToBasket']
+    emits: ['addingToBasket'],
+}
+methods: {
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-    <nav dir="rtl" class="bg-white dark:bg-gray-900 shadow-lg m-5 rounded-2xl">
+    <nav dir="rtl" class="bg-white dark:bg-gray-900 shadow-lg m-5 rounded-2xl font-titr">
         <div
             class="
                 container
@@ -18,6 +18,7 @@
                 <span
                     class="
                     px-2
+                    font-titr
                         self-center
                         text-lg
                         font-semibold

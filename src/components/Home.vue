@@ -1,10 +1,27 @@
 <template>
     <NavigationBar />
+<!-- advertisement Slider -->
 
+<vueper-slides autoplay  fade :arrows="false"  :touchable="true"  class="adv-slider no-shadow md:w-3/4 mx-auto p-3 mb-4 " arrows-inside bullets-inside transition-speed="250">
+  <vueper-slide
+    v-for="slide in slides"
+    :key="slide.id"
+    :content="slide.image"
+   >
+
+   
+  </vueper-slide>
+</vueper-slides>
+
+
+
+
+<!-- product Slider -->
     <vueper-slides
+        :arrows="false"
         class="no-shadow max-w-4xl mx-auto p-4"
         :touchable="true"
-        fixed-height="450px"
+        fixed-height="500px"
         :visible-slides="3"
         slide-multiple
         :gap="3"
@@ -17,7 +34,7 @@
                 <ProductCard
                     :productTitle="product.title"
                     :productDes="product.detail"
-                    :productPrice="toFarsiNumber(product.price)"
+                    :productPrice="ToRial(product.price)"
                     :productPic="product.picture"
                     @addingToBasket="
                         addToCounter(product);
@@ -48,7 +65,7 @@
         
     </div> -->
 
-    <notifications :width="250" position="bottom right" class="text-center" />
+    <notifications :width="250" position="bottom left " class="text-center" />
 </template>
 
 <script>
@@ -70,31 +87,24 @@ export default {
     },
     methods: {
         ...mapMutations('basket', ['addToCounter']),
-        toFarsiNumber(n) {
-            const farsiDigits = [
-                '۰',
-                '۱',
-                '۲',
-                '۳',
-                '۴',
-                '۵',
-                '۶',
-                '۷',
-                '۸',
-                '۹',
-            ]
-
-            return n
-                .toString()
-                .split('')
-                .map((x) => farsiDigits[x])
-                .join('')
-        },
+       
         notify() {
             this.$notify({
                 type: 'success',
                 text: 'آیتم به سبد خرید اضافه شد',
             })
+        },
+        ToRial(str) {
+            str.toString()
+            str = str.replace(/\,/g, '')
+            var objRegex = new RegExp('(-?[0-9]+)([0-9]{3})')
+
+            while (objRegex.test(str)) {
+                str = str.replace(objRegex, '$1,$2')
+            }
+           
+
+            return str
         },
     },
     beforeCreate() {
@@ -108,6 +118,24 @@ export default {
             document.documentElement.classList.remove('dark')
         }
     },
+    data(){
+        return{
+            slides:[
+                {
+                    id:0,
+                    image:'<img src="../../assets/images/slides/98a06d45de142b379f6d236526aa9ada-shop-online-web-slider-design.jpeg" alt="">'
+                },
+                {
+                    id:1,
+                    image:'<img src="../../assets/images/slides/aa72abca784117244de372b5e9926988-online-shopping-slider-template.jpeg" alt="">'
+                },
+                {
+                    id:2,
+                    image:'<img src="../../assets/images/slides/eppi125_Slider_965x355-1200x441.jpeg" alt="">'
+                }
+            ]
+        }
+    }
 }
 </script>
 
@@ -117,13 +145,19 @@ export default {
 } */
 
 .dark .vueperslides__arrow {
-    color: white;}
-@media screen  and (max-width:800px){
-    .dark .vueperslides__arrow{
+    color: white;
+}
+@media screen and (max-width: 800px) {
+    .dark .vueperslides__arrow {
         color: black !important;
     }
-    .vueperslides__arrow{
-        color:black !important;
+    .vueperslides__arrow {
+        color: black !important;
     }
+}
+.ex--center-mode {
+  width: 600px;
+  max-width: 100%;
+  margin: auto;
 }
 </style>

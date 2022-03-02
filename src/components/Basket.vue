@@ -1,16 +1,14 @@
 <template>
     <div class="flex flex-row justify-between flex-wrap min-h-screen m-auto">
-        <div class="flex flex-col md:w-3/5 sm:w-full w-full">
+        <div class="flex flex-col md:w-3/5 md:ml-3 sm:w-full w-full">
             <div v-for="item in basketItems" :key="item.id">
                 <BasketCard
                     :productDetail="products[item.id].detail"
                     :productPicture="products[item.id].picture"
                     :productTitle="products[item.id].title"
-                    :productPrice="toFarsiNumber(products[item.id].price)"
+                    :productPrice="ToRial(products[item.id].price)"
                     :count="item.qun"
-                    :totalPrice="
-                        toFarsiNumber(item.qun * products[item.id].price)
-                    "
+                    :totalPrice="ToRial(item.qun * products[item.id].price)"
                     @updateCount="
                         changeCount([
                             basketItems.indexOf(item),
@@ -28,27 +26,30 @@
                 flex flex-col
                 justify-start
                 md:mt-3
+                md:mr-3
                 sm:mt-2
+                
                 rounded-lg
                 shadow-md
+                dark:bg-gray-900 dark:text-white
                 bg-white
+                font-product
                 max-h-72
                 p-2
                 md:w-1/3
-                sm:w-full
+                sm:w-4/5
+                
                 w-full
             "
             :class="[basketItems.length === 0 ? 'hidden' : 'display']"
         >
-        <div class="flex flex-row justify-between">
-            <p class="mb-1">
-                جمع سبد خرید 
-            </p>
-            <span class="font-bold mb-1 ml-3">
-                {{toFarsiNumber(basketAllPrice)}}
-            </span>
-        </div>
-            
+            <div class="flex flex-row justify-between">
+                <p class="mb-1">جمع سبد خرید</p>
+                <span class="font-[1100] text-lg mb-1 ml-3">
+                    {{ ToRial(basketAllPrice) + ' ' +'تومان' }}
+                </span>
+            </div>
+
             <p class="">
                 هزینه‌ی ارسال در ادامه بر اساس آدرس، زمان و نحوه‌ی ارسال انتخابی
                 شما‌ محاسبه و به این مبلغ اضافه خواهد شد
@@ -95,37 +96,43 @@ export default {
     },
     methods: {
         //converting Eng Numbers To Persian
-        toFarsiNumber(n) {
-            const farsiDigits = [
-                '۰',
-                '۱',
-                '۲',
-                '۳',
-                '۴',
-                '۵',
-                '۶',
-                '۷',
-                '۸',
-                '۹',
-            ]
-            return n
-                .toString()
-                .split('')
-                .map((x) => farsiDigits[x])
-                .join('')
+        ToRial(str) {
+            str = str.toString().replace(/\,/g, '')
+            var objRegex = new RegExp('(-?[0-9]+)([0-9]{3})')
+
+            while (objRegex.test(str)) {
+                str = str.replace(objRegex, '$1,$2')
+            }
+
+            return str
         },
         //importing Mutation Methods
         ...mapMutations('basket', ['deleteItem', 'changeCount']),
-        myBackButtonFunction(){
+        myBackButtonFunction() {
             this.$router.go(-1)
         },
     },
-    mounted(){
-            document.addEventListener("backbutton",this.myBackButtonFunction,false)
+    mounted() {
+        document.addEventListener(
+            'backbutton',
+            this.myBackButtonFunction,
+            false
+        )
     },
-    beforeUnmount(){
-        document.removeEventListener("backbutton",this.myBackButtonFunction)
-    }
+    beforeUnmount() {
+        document.removeEventListener('backbutton', this.myBackButtonFunction)
+    },
+     beforeCreate() {
+        if (
+            localStorage.getItem('color-theme') === 'dark' ||
+            (!('color-theme' in localStorage) &&
+                window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    },
 }
 </script>
 
