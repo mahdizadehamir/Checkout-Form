@@ -52,12 +52,12 @@
                     {{ productTitle }}
                 </h5>
                 <p class="mb-3 font-product font-normal text-gray-700 dark:text-gray-400">
-                    {{ productDetail }}
+                    {{ productDetail }} 
                 </p>
             </div>
         </a>
         <div class="flex flex-col dark:text-white justify-between items-center p-4">
-            <p class="font-product">{{ productPrice }}  :قیمت واحد </p>
+            <p class="font-product"> {{ productPrice }}  :قیمت واحد </p>
             <div class="flex flex-row justify-between">
                 <input
                     class="w-16 mr-4 border-2 font-product dark:text-black text-center"
@@ -69,7 +69,7 @@
                 <label for="count">:تعداد</label>
             </div>
 
-            <p class="font-product mt-3">جمع مبلغ : {{ totalPrice }}</p>
+            <p class="font-product mt-3">جمع مبلغ : {{ totalPrice }} تومان</p>
         </div>
         <a href="#" @click="$emit('trashButton')"><fa class="dark:text-white" icon="trash" /></a>
     </div>
