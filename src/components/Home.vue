@@ -1,15 +1,15 @@
 <template>
     <NavigationBar />
+    <NewNav />
 <!-- advertisement Slider -->
-
 <vueper-slides autoplay  fade :arrows="false"  :touchable="true"  class="adv-slider no-shadow md:w-3/4 mx-auto p-3 mb-4 " arrows-inside bullets-inside transition-speed="250">
   <vueper-slide
     v-for="slide in slides"
     :key="slide.id"
-    :content="slide.image"
    >
-
-   
+    <template #content>
+    <img :src=slide.imgURL alt="slider-image">
+   </template>
   </vueper-slide>
 </vueper-slides>
 
@@ -26,7 +26,7 @@
         slide-multiple
         :gap="3"
         :slide-ratio="1 / 4"
-        :dragging-distance="200"
+        :dragging-distance="100"
         :breakpoints="{ 800: { visibleSlides: 1, slideMultiple: 2 } }"
     >
         <vueper-slide v-for="product in products" :key="product.id">
@@ -69,6 +69,7 @@
 </template>
 
 <script>
+import NewNav from './NewNav.vue'
 import { VueperSlides, VueperSlide } from 'vueperslides'
 import 'vueperslides/dist/vueperslides.css'
 import ProductCard from './ProductCard.vue'
@@ -80,6 +81,7 @@ export default {
         NavigationBar,
         VueperSlides,
         VueperSlide,
+        NewNav
     },
     computed: {
         ...mapState('products', ['products']),
@@ -123,15 +125,15 @@ export default {
             slides:[
                 {
                     id:0,
-                    image:'<img src="../../assets/images/slides/98a06d45de142b379f6d236526aa9ada-shop-online-web-slider-design.jpeg" alt="">'
+                    imgURL:"../../assets/images/slides/98a06d45de142b379f6d236526aa9ada-shop-online-web-slider-design.jpeg"
                 },
                 {
                     id:1,
-                    image:'<img src="../../assets/images/slides/aa72abca784117244de372b5e9926988-online-shopping-slider-template.jpeg" alt="">'
+                    imgURL:"../../assets/images/slides/aa72abca784117244de372b5e9926988-online-shopping-slider-template.jpeg"
                 },
                 {
                     id:2,
-                    image:'<img src="../../assets/images/slides/eppi125_Slider_965x355-1200x441.jpeg" alt="">'
+                    imgURL:"../../assets/images/slides/eppi125_Slider_965x355-1200x441.jpeg"
                 }
             ]
         }

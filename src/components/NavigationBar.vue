@@ -1,5 +1,6 @@
 <template>
-    <nav dir="rtl" class="bg-white dark:bg-gray-900 shadow-lg m-5 rounded-2xl font-titr">
+<div></div>
+    <!-- <nav dir="rtl" class="bg-white dark:bg-gray-900 shadow-lg m-5 rounded-2xl font-titr">
         <div
             class="
                 container
@@ -9,16 +10,16 @@
                 mx-auto
             "
         >
-            <a href="#" class="flex">
+            <a href="#" class="flex items-center">
                <img
                         src="../../assets/images/logo/favpng_safe-room-house-amiran-hotel.png"
-                        alt=""
+                        alt="amiran-logo"
                         class="w-24 text-white p-3"
                     />
                 <span
                     class="
-                    px-2
-                    font-titr
+                        px-2
+                        font-titr
                         self-center
                         text-lg
                         font-semibold
@@ -29,7 +30,7 @@
                 >
             </a>
             <button
-                data-collapse-toggle="mobile-menu"
+                data-collapse-toggle="mobile-menu-"
                 type="button"
                 class="
                     inline-flex
@@ -100,6 +101,7 @@
                             text-2xl
                             font-titr
                             ml-5
+                            self-center
                         "
                         ><svg
                             class="w-6 h-6"
@@ -202,7 +204,7 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
 </template>
 
 <script>

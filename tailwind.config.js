@@ -13,10 +13,8 @@ module.exports = {
     variants: {
         extend: {},
     },
+    content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
     plugins: [
-        require('flowbite/plugin')
-    ],
-    content:[
-        "./node_modules/flowbite/**/*.js"
+      require('tw-elements/dist/plugin')
     ]
 }
