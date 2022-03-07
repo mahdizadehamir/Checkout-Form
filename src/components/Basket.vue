@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-row justify-between flex-wrap min-h-screen m-auto">
+    <div v-if="basketItems.length !== 0" class="flex flex-row justify-between flex-wrap min-h-screen m-auto">
         <div class="flex flex-col md:w-3/5 md:ml-3 sm:w-full w-full">
             <div v-for="item in basketItems" :key="item.id">
                 <BasketCard
@@ -69,6 +69,7 @@
             </router-link>
         </div>
     </div>
+    <div v-else class="text-white font-titr  grid place-items-center h-screen"><p>ایتمی در لیست خرید شما وجود ندارد عزیزم</p></div>
 </template>
 
 <script>
@@ -111,6 +112,9 @@ export default {
         myBackButtonFunction() {
             this.$router.go(-1)
         },
+        consoling(){
+            console.log("hellow")
+        }
     },
     mounted() {
         document.addEventListener(

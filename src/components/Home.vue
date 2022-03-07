@@ -1,8 +1,10 @@
 <template>
-    <NavigationBar />
-    <NewNav />
+    <NavigationBar
+    :bdgNumber="basketItems.length"
+     />
+
 <!-- advertisement Slider -->
-<vueper-slides autoplay  fade :arrows="false"  :touchable="true"  class="adv-slider no-shadow md:w-3/4 mx-auto p-3 mb-4 " arrows-inside bullets-inside transition-speed="250">
+<vueper-slides autoplay  fade :arrows="true"  :touchable="true"  class="adv-slider no-shadow md:w-3/4 mx-auto p-3 mb-4 " arrows-inside bullets-inside transition-speed="250">
   <vueper-slide
     v-for="slide in slides"
     :key="slide.id"
@@ -18,7 +20,7 @@
 
 <!-- product Slider -->
     <vueper-slides
-        :arrows="false"
+        :arrows="true"
         class="no-shadow max-w-4xl mx-auto p-4"
         :touchable="true"
         fixed-height="500px"
@@ -69,7 +71,6 @@
 </template>
 
 <script>
-import NewNav from './NewNav.vue'
 import { VueperSlides, VueperSlide } from 'vueperslides'
 import 'vueperslides/dist/vueperslides.css'
 import ProductCard from './ProductCard.vue'
@@ -81,11 +82,11 @@ export default {
         NavigationBar,
         VueperSlides,
         VueperSlide,
-        NewNav
+        
     },
     computed: {
         ...mapState('products', ['products']),
-        ...mapState('basket', ['selectedItems']),
+        ...mapState('basket', ['basketItems','selectedItems']),
     },
     methods: {
         ...mapMutations('basket', ['addToCounter']),
