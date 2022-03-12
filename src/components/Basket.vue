@@ -67,6 +67,7 @@
                 "
                 >ادامه فرایند خرید
             </router-link>
+            <button @click="this.$router.push('/')">back</button>
         </div>
     </div>
     <div v-else class="text-white font-titr  grid place-items-center h-screen"><p>ایتمی در لیست خرید شما وجود ندارد عزیزم</p></div>
@@ -81,6 +82,7 @@ export default {
     data() {
         return {}
     },
+    
     computed: {
         //importing stateItems From Store
         ...mapState('products', ['products']),
@@ -109,22 +111,18 @@ export default {
         },
         //importing Mutation Methods
         ...mapMutations('basket', ['deleteItem', 'changeCount']),
-        myBackButtonFunction() {
-            this.$router.go(-1)
-        },
-        consoling(){
-            console.log("hellow")
-        }
+        // myBackButtonFunction() {
+        //     this.$router.push({name : 'Home'})
+        // },
+       
     },
     mounted() {
-        document.addEventListener(
-            'backbutton',
-            this.myBackButtonFunction,
-            false
-        )
+        // window.onpopstate = event => {
+        //     this.$router.push("/")
+        // }
     },
     beforeUnmount() {
-        document.removeEventListener('backbutton', this.myBackButtonFunction)
+        // document.removeEventListener('backbutton', this.myBackButtonFunction)
     },
      beforeCreate() {
         if (

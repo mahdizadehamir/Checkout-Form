@@ -210,7 +210,9 @@
                                     />
                                 </svg>
                                 <span
-                                    :class="bdgNumber!==0 ? 'display' : 'hidden'"
+                                    :class="
+                                        bdgNumber !== 0 ? 'display' : 'hidden'
+                                    "
                                     class="
                                         font-product
                                         absolute
@@ -224,12 +226,11 @@
                                         right
                                         p-0
                                         m-0
-                                        text-white
-                                        text-sm
+                                        text-white text-sm
                                         leading-tight
                                         text-center
                                     "
-                                    >{{bdgNumber}}
+                                    >{{ bdgNumber }}
                                 </span>
                             </a>
                         </li>
@@ -285,7 +286,7 @@
 
 <script>
 export default {
-    props:['bdgNumber'],
+    props: ['bdgNumber'],
     methods: {
         enableDarkMode() {
             if (localStorage.theme === null) {

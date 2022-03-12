@@ -46,6 +46,7 @@ export default {
             const elementId = state.basketItems.findIndex(findElementId)
             state.basketItems.splice(elementId, 1)
             state.selectedItems.splice(0, state.selectedItems.length)
+            // window.history.pushState({},'',"/")
         },
         changeCount(state, payload) {
             state.basketItems[payload[0]].qun = payload[1]

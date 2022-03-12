@@ -1,8 +1,8 @@
 <template>
-    <div class="font-bold text-center mt-5">فروشگاه اینترنتی امیران</div>
-    <div dir="rtl" class="flex flex-row p-4 justify-center mt-4 w-full">
+    <div class="font-bold font-titr text-2xl dark:text-gray-200 text-center mt-5">فروشگاه اینترنتی امیران</div>
+    <div dir="rtl" class="font-product flex flex-row p-4 justify-center mt-4 w-full">
         <router-link
-            class="rounded p-2 border-2 border-black"
+            class="rounded-xl opacity-60 p-2 border-2 bg-red-500 text-white "
             :to="{ name: 'Basket' }"
             >سبد خرید</router-link
         >
@@ -12,13 +12,15 @@
                 relative
                 inline-block
                 w-1/12
-                border-b-2 border-red-500
+                border-b-2 border-black
+                opacity-50
                 self-center
                 md:mx-5
+                
             "
         ></div>
         <router-link
-            class="rounded p-2 border-2 bg-red-500 text-white"
+            class="rounded-xl p-2 border-2 bg-red-500 text-white"
             :to="{ name: 'Checkout' }"
             >دریافت آدرس پستی و نحوه ارسال</router-link
         >
@@ -31,15 +33,16 @@
                 border-b-2 border-black
                 self-center
                 md:mx-5
+                opacity-50
             "
         ></div>
         <router-link
-            class="rounded p-2 border-2 border-black"
+            class="rounded-xl p-2 border-2 text-white bg-red-500 opacity-60"
             :to="{ name: 'PayMethod' }"
             >نحوه پرداخت</router-link
         >
     </div>
-    <div class="flex flex-row border-2 border-black mt-2 p-2 md:w-5/6 mx-auto">
+    <div class="flex flex-row border-2 border-black mt-2 p-2 md:w-5/6 mx-auto font-product">
         <div class="summary w-1/4 border-2 border-black"></div>
         <div dir="rtl" class="flex flex-row justify-around order w-3/4 border-2 border-black">
         <!-- first  column -->
@@ -73,8 +76,8 @@
                         type="text"
                         placeholder="ادامه آدرس"
                     />
-                    <label class="block mt-2" for="state">استان :</label>
-                    <select @input="updateSelect" class="mt-1" name="state">
+                    <label class=" block mt-2" for="state">استان :</label>
+                    <select @input="updateSelect" class=" text-base font-product bg-white bg-clip-padding bg-no-repeat transition ease-in-out mt-1 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="state">
                         <option
                             v-for="province in provinces"
                             :key="province"
@@ -84,7 +87,7 @@
                         </option>
                     </select>
                     <label class="block mt-2" for="city">شهر :</label>
-                    <select name="city">
+                    <select class="text-base font-product bg-white bg-clip-padding bg-no-repeat transition ease-in-out mt-1 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none w-3/4 " name="city">
                         <option
                             v-for="city in showProvinceCity"
                             :key="city"
