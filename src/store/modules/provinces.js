@@ -1446,6 +1446,7 @@ export default {
         //
         updateSelect(state, payload) {
             state.provinceSelect = parseInt(payload)
+            console.log(state.provinceSelect)
         },
     },
 

@@ -7,7 +7,12 @@ const store = createStore({
     modules: {
         products,basket,provinces
     },
-    plugins : [createPersistedState()]
+    plugins : [createPersistedState()],
+    state: ()=> ({
+        ali : 0
+    })
+        
+    
 })
 
 export default store

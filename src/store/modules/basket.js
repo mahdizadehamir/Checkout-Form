@@ -4,10 +4,11 @@ export default {
         selectedItems: [],
         basketItems: [],
         counter: {},
+        totalPrice:0
     }),
     // getters is change the value of States but its Temporary
     getters: {
-       
+        
     },
 
     mutations: {
@@ -51,6 +52,7 @@ export default {
         changeCount(state, payload) {
             state.basketItems[payload[0]].qun = payload[1]
         },
+      
 
     },
 

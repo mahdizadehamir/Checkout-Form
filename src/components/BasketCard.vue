@@ -71,7 +71,7 @@
 
             <p class="font-product mt-3">جمع مبلغ : {{ totalPrice }} تومان</p>
         </div>
-        <a href="#" @click="$emit('trashButton')"><fa class="dark:text-white" icon="trash" /></a>
+        <button  @click="$emit('trashButton')"><fa class="dark:text-white" icon="trash" /></button>
     </div>
 </template>
 
