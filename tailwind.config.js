@@ -4,10 +4,11 @@ module.exports = {
     darkMode: "class", // or 'media' or 'class'
     theme: {
         extend: {},
+        //define font groups
         fontFamily:{
             'titr':['Lalezar','Noto Naskh Arabic UI'],
             'body':['Noto Naskh Arabic UI','Lalezar'],
-            'product':['B Yekan','Noto Naskh Arabic UI','Open Sans'],
+            'product':['BTraffic','Noto Naskh Arabic UI','Open Sans'],
         }
     },
     variants: {

@@ -2,10 +2,10 @@ import { createStore } from 'vuex'
 import createPersistedState from "vuex-persistedstate";
 import products from '../store/modules/products'
 import basket from '../store/modules/basket'
-import provinces from '../store/modules/provinces'
+import stateAndprovinces from '../store/modules/stateAndprovinces'
 const store = createStore({
     modules: {
-        products,basket,provinces
+        products,basket,stateAndprovinces
     },
     plugins : [createPersistedState()],
     state: ()=> ({

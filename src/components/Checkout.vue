@@ -61,7 +61,7 @@
                 md:w-5/6
                 mx-auto
                 font-product
-								dark:text-white
+                dark:text-white
             "
         >
             <!-- right column -->
@@ -89,7 +89,15 @@
 
                     <label class="block" for="firstname"> نام:</label>
                     <input
-                        class="dark:text-black rounded form-input h-8 bg-gray-200 mt-1 w-40"
+                        class="
+                            dark:text-black
+                            rounded
+                            form-input
+                            h-8
+                            bg-gray-200
+                            mt-1
+                            w-40
+                        "
                         name="firstname"
                         type="text"
                         required
@@ -100,28 +108,44 @@
                     <input
                         type="text"
                         name="lastname"
-                        class="dark:text-black rounded mt-1 h-8 bg-gray-200 w-40"
+                        class="
+                            dark:text-black
+                            rounded
+                            mt-1
+                            h-8
+                            bg-gray-200
+                            w-40
+                        "
                         required
                     />
                     <label class="block mt-2 mb-2" for="address"
                         >آدرس تحویل مرسوله :</label
                     >
                     <input
-                        class="dark:text-black rounded bg-gray-200 w-3/4 h-8"
+                        class="dark:text-black rounded bg-gray-200 w-full h-8"
                         type="text"
                         name="address"
                         required
                     />
                     <input
-                        class="dark:text-black rounded bg-gray-200 w-3/4 block mt-2 h-8"
+                        class="
+                            dark:text-black
+                            rounded
+                            bg-gray-200
+                            w-full
+                            block
+                            mt-2
+                            h-8
+                        "
                         type="text"
                         placeholder="ادامه آدرس"
                     />
                     <label class="block mt-2" for="state">استان :</label>
                     <select
-                        @input="updateSelect"
+                        v-on:input="updateSelect"
                         class="
-												dark:text-black
+                            form-control
+                            dark:text-black
                             rounded
                             text-base
                             font-product
@@ -133,13 +157,16 @@
                             focus:bg-white
                             focus:border-blue-600
                             focus:outline-none
-                            w-1/2
+                            w-full
                         "
+                        required
                         name="state"
+                        
                     >
+                    <option disabled selected value="" >یک گزینه را انتخاب کنید</option>
                         <option
                             v-for="province in provinces"
-                            :key="province"
+                            :key="province.id"
                             :value="province.id"
                         >
                             {{ province.name }}
@@ -148,7 +175,7 @@
                     <label class="block mt-2" for="city">شهر :</label>
                     <select
                         class="
-												dark:text-black
+                            dark:text-black
                             rounded
                             text-base
                             font-product
@@ -160,11 +187,13 @@
                             focus:bg-white
                             focus:border-blue-600
                             focus:outline-none
-                            w-1/2
+                            w-3/4
                             h-10
                         "
+                        required
                         name="city"
                     >
+                    <option value="" selected disabled>یک گزینه را انتخاب کنید</option>
                         <option
                             v-for="city in showProvinceCity"
                             :key="city"
@@ -173,11 +202,19 @@
                             {{ city }}
                         </option>
                     </select>
-                    <label class=" block mt-2 mb-2" for="zipcode"
+                    <label class="block mt-2 mb-2" for="zipcode"
                         >کد پستی :
                     </label>
                     <input
-                        class="dark:text-black mb-2 form-input w-3/4 rounded h-8 bg-gray-200"
+                        class="
+                            dark:text-black
+                            mb-2
+                            form-input
+                            w-3/4
+                            rounded
+                            h-8
+                            bg-gray-200
+                        "
                         type="number"
                         name="zipcode"
                     />
@@ -189,7 +226,15 @@
 
                     <label class="block mt-2 mb-2" for="email">ایمیل :</label>
                     <input
-                        class="dark:text-black h-8 rounded bg-gray-200 w-1/2"
+                        class="
+                            form-control
+                            dark:text-black
+                            h-8
+                            rounded
+                            bg-gray-200
+                            w-full
+                            font-body
+                        "
                         type="email"
                         required
                     />
@@ -197,7 +242,16 @@
                         >شماره تلفن :</label
                     >
                     <input
-                        class="dark:text-black h-8 rounded form-input bg-gray-200 w-1/2 "
+                        class="
+                        font-body
+                            dark:text-black
+                            h-8
+                            rounded
+                            form-input
+                            bg-gray-200
+                            w-full
+                            form-control
+                        "
                         type="tel"
                     />
                 </div>
@@ -213,16 +267,17 @@ export default {
         return {
             myProvince: null,
             nameInput: null,
+            disabled:"",
         }
     },
     computed: {
-        ...mapState('provinces', ['provinces']),
+        ...mapState('stateAndprovinces', ['provinces']),
         ...mapState('products', ['products']),
         ...mapState({
             provinciData: (state) => state.provinces.provinceSelect,
         }),
         ...mapState('basket', ['basketItems']),
-        ...mapGetters('provinces', ['showProvinceCity']),
+        ...mapGetters('stateAndprovinces', ['showProvinceCity']),
         basketAllPrice: function () {
             let sum = 0
             for (let i = 0; i < this.basketItems.length; i++) {
@@ -235,7 +290,7 @@ export default {
     },
     methods: {
         updateSelect(e) {
-            this.$store.commit('provinces/updateSelect', e.target.value)
+            this.$store.commit('stateAndprovinces/updateSelect', e.target.value)
         },
         ToRial(str) {
             str = str.toString().replace(/\,/g, '')
@@ -262,4 +317,6 @@ export default {
 }
 </script>
 
-<style></style>
+<style >
+
+</style>

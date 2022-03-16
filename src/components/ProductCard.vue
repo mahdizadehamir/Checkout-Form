@@ -51,7 +51,7 @@
                         font-product
                     "
                 >
-                    <span dir="rtl"
+                    <span class="font-product" dir="rtl"
                         >{{ productPrice }} <span class="text-sm">تومان</span>
                     </span>
                 </div>
